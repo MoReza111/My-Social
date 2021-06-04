@@ -1,13 +1,24 @@
 const express = require('express')
-const db = require('./../db/db')
+const db = require('./../db')
 const bcrypt = require('bcryptjs')
 const { v4: uuidv4 } = require('uuid')
+const passport = require('passport')
 
 const router = express.Router()
 
 // Login Page
 router.get('/login',(req,res,next)=>{
     res.render('login')
+})
+
+// Login Handle
+router.post('/login',(req,res,next)=>{
+    passport.authenticate('local', {
+        successRedirect: '/home',
+        failureRedirect: '/users/login',
+        failureFlash: true,
+        session: false
+    })(req, res, next)
 })
 
 // Register Page
