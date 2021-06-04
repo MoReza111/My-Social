@@ -1,0 +1,116 @@
+<head>
+    <link rel="stylesheet" href="/css/home.css" />
+</head>
+<div class="header">
+    <div class="header-logo">
+        <a href="/">My-Social</a>
+    </div>
+    <form action="" method="post">
+        <input class="search-input" type="text" placeholder="Search" />
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+    <nav>
+        <ul>
+            <li><a href="/"><i class="fas fa-home"></i></a></li>
+            <li><a href="/activity"><i class="far fa-heart"></i></a></li>
+            <li><a href="/profile"><img src="/images/4950546.jpg" alt="profile-pic" class="nav-img" /></a></li>
+        </ul>
+    </nav>
+</div>
+<div class="container">
+    <div class="main">
+        <div class="posts">
+            <div class="post">
+                <div class="post-header">
+                    <img src="/images/4950546.jpg" alt="user-profile" />
+                    <a href="#">username</a>
+                </div>
+                <div class="post-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, natus.</p>
+                </div>
+                <div class="post-footer">
+                    <a href="/activity"><i class="far fa-heart"></i></a>
+                    <form action="" method="POST">
+                        <input class="comment-input" type="text" />
+                        <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="post">
+                <div class="post-header">
+                    <img src="/images/4950546.jpg" alt="user-profile" />
+                    <a href="#">username</a>
+                </div>
+                <div class="post-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, natus.</p>
+                </div>
+                <div class="post-footer">
+                    <a href="/activity"><i class="far fa-heart"></i></a>
+                    <form action="" method="POST">
+                        <input class="comment-input" type="text" />
+                        <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="suggetions">
+            <div class="suggetion">
+                <ul>
+                    <li>
+                        <form action="" method="post">
+                            <a href="#">username</a><input type="submit" class="btn btn-primary" value="Follow"></input>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="footer-link">
+        <div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Contact Us</a></li>
+                <li><a href="/activity">Activity</a></li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li><a href="/">Api</a></li>
+                <li><a href="/">Github</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-text">
+        <p>All rights reserved by <a href="">@MoReza111</a></p>
+    </div>
+</div>
+<button id="open" class="open-modal">
+    <i class="fas fa-plus"></i>
+</button>
+<div class="modal-container" id="modal-container">
+    <div class="modal">
+        <div class="modal-header">
+            <h1>Add your tweet</h1>
+            <button id="close" class="close">X</button>
+        </div>
+        <div class="modal-content">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <textarea class="inputs"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="file" name="file" id="file" class="inputfile" />
+                    <label for="file"><i class="fas fa-upload"></i> Choose a file</label>
+                </div>    
+                <input type="submit" value="submit" class="btn btn-secondary">
+            </form>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+</div>
+
+<script src="index.js"></script>

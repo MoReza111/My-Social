@@ -1,0 +1,280 @@
+body{
+    position: relative;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height:7%;
+    background-color: #fff;
+    color:#333;
+    font-size: 1.5rem;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.header .header-logo{
+    width:30%;
+}
+
+.header form{
+    width:40%;
+    display:flex;
+    align-items: center;
+}
+
+.header nav{
+    width:15%;
+}
+
+.header a{
+    color:#333;
+    padding:5px;
+}
+
+.header nav ul{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header form input{
+    width:50%;
+    height: 30px;
+    padding:10px;
+    font-size: 1.2rem;
+    border-right: none;
+}
+
+.header form button{
+    height:30px;
+    border-left:none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.nav-img{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+}
+
+.container{
+    width:80%;
+    height:75%;
+    margin:0 auto;
+}
+
+.main{
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.posts{
+    width:80%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post{
+    width:100%;
+    height: 200px;
+    border: 1px #333 solid;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.post-header{
+    display: flex;
+    align-items: center;
+    height:10%;
+}
+
+.post-header img{
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;;
+}
+
+.post-content{
+    border-bottom: 1px #333 solid;
+    border-top: 1px #333 solid;
+    width:100%;
+    height:50%;
+}
+
+.post-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post-footer form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-footer form input{
+    width:500px;
+    height: 30px;
+    font-size: 1.2rem;
+    border:1px #333 solid;
+    border-right: none;
+}
+
+.post-footer form button{
+    height:30px;
+    border:1px #333 solid;
+    border-left:none;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.suggetion a{
+    padding:10px;
+}
+
+.footer{
+    height:10%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-link{
+    display: flex;
+    align-items:flex-start;
+    background-color:#fff;
+    padding:15px;
+}
+
+.footer-link a{
+    color:#333;
+}
+
+.footer-link div{
+    margin-right: 50px;
+}
+
+.footer-text{
+    background-color: #333;
+    padding:5px;
+}
+
+.modal-container{
+    pointer-events: none;
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.3);
+}
+
+.modal{
+    background-color: #fff;
+    width:60%;
+    height:50%;
+    padding:30px 50px;
+    border-radius: 5px;
+    color:#333;
+}
+
+.inputs{
+    background-color: #eee;
+    width:100%; 
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin: 10px 0 20px 0;
+    padding:20px;
+    font-family: inherit;
+    min-height: 50%;
+    resize: none;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #333;
+    background-color: #eee;
+    display: inline-block;
+    padding:5px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: #fff;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.show{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.open-modal{
+    position: fixed;
+    right:30px;
+    bottom:40px;
+    z-index: 10;
+    width:75px;
+    height:75px;
+    background-color: #c4c4c4;
+    padding:10px;
+    border-radius: 50%;
+    color: #fff;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.open-modal i{
+    font-size: 1.2rem;
+}
+
+.close{
+    background-color: transparent;
+    border: none;
+    cursor :pointer;
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

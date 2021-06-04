@@ -1,0 +1,38 @@
+body{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.home-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height:50%;
+    background:#fff;
+    color:#333;
+    width:30%;
+    margin: 0 auto;
+}
+
+.btn{
+    display:block;
+    cursor: pointer;
+    padding:10px 23px;
+    height:50px;
+}
+
+.btn-block{
+    width: 75%;
+}
+
+.btn-dark{
+    background-color: #333;
+    color:#fff;
+}
+
+.btn-light{
+    background-color: #04ffff9d;
+    color:#333;
+}

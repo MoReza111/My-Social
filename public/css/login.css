@@ -1,0 +1,50 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:black;
+}
+
+.main-modal{
+    display: flex;
+    background-color: #fff;
+    width:85%;
+    height:70%;
+}
+
+.login-section{
+    width:50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group{
+    width:100%;
+    margin-bottom: 10px;
+}
+
+.form-group label{
+    display:inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.form-group input{
+    width:100%;
+    height:30px;
+    padding: 5px;
+    color:#fff;
+    background-color: #333;
+    border: 0;
+    font-size: 1rem;
+}
+
+.login-img{
+    width:50%;
+}
+
+.login-img img{
+    height: 100%;
+    width: 100%;
+}

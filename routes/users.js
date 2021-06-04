@@ -4,12 +4,12 @@ const router = express.Router()
 
 // Login Page
 router.get('/login',(req,res,next)=>{
-    res.send("HI there")
+    res.render('login')
 })
 
 // Register Page
-router.post('/register',(req,res,next)=>{
-    res.send("HI there")
+router.get('/register',(req,res,next)=>{
+    res.render('register')
 })
 
 // Profile Page
