@@ -17,7 +17,6 @@ router.post('/login',(req,res,next)=>{
         successRedirect: '/home',
         failureRedirect: '/users/login',
         failureFlash: true,
-        session: false
     })(req, res, next)
 })
 

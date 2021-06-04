@@ -15,9 +15,8 @@ module.exports = (passport)=>{
                 }
 
                 // Match Password
-                console.log(result[0].user_password)
-
                 const checkUserPass = await bcrypt.compare(password,result[0].user_password)
+                console.log(result[0])
                 if(checkUserPass){
                     return done(null,result[0])
                 }
@@ -27,7 +26,7 @@ module.exports = (passport)=>{
     )
 
     passport.serializeUser((user, done)=> {
-        done(null, user.id);
+        done(null, user.user_id)
     })
     
     passport.deserializeUser((id, done) =>{
