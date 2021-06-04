@@ -17,6 +17,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .form-group{
@@ -47,4 +48,13 @@ body{
 .login-img img{
     height: 100%;
     width: 100%;
+}
+
+.question a{
+    color:#333;
+    padding:5px;
+}
+
+.question h4{
+    display:inline-block;
 }
