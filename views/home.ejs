@@ -12,46 +12,35 @@
     <nav>
         <ul>
             <li><a href="/"><i class="fas fa-home"></i></a></li>
-            <li><a href="/activity"><i class="far fa-heart"></i></a></li>
-            <li><a href="/profile"><img src="/images/4950546.jpg" alt="profile-pic" class="nav-img" /></a></li>
+            <li><a href="#"><i class="far fa-heart"></i></a></li>
+            <li><a href="/users/profile"><img src="/images/<%= user.profile_image %>" alt="profile-pic" class="nav-img" /></a></li>
         </ul>
     </nav>
 </div>
 <div class="container">
     <div class="main">
         <div class="posts">
+            <% posts.forEach(post=>{  %>
             <div class="post">
                 <div class="post-header">
-                    <img src="/images/4950546.jpg" alt="user-profile" />
-                    <a href="#">username</a>
+                    <img src="/images/<%= post.profile_image %>" alt="user-profile" />
+                    <a href="#"><%= post.user_name %></a>
                 </div>
                 <div class="post-content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, natus.</p>
+                    <% if(post.media_name){ %>
+                        <img class="post-img" src="/images/posts/<%= post.media_name %>" >
+                    <% } %>    
+                    <p><%= post.content %></p>
                 </div>
                 <div class="post-footer">
-                    <a href="/activity"><i class="far fa-heart"></i></a>
+                    <a href="#"><i class="far fa-heart"></i></a>
                     <form action="" method="POST">
                         <input class="comment-input" type="text" />
                         <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                     </form>
                 </div>
             </div>
-            <div class="post">
-                <div class="post-header">
-                    <img src="/images/4950546.jpg" alt="user-profile" />
-                    <a href="#">username</a>
-                </div>
-                <div class="post-content">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, natus.</p>
-                </div>
-                <div class="post-footer">
-                    <a href="/activity"><i class="far fa-heart"></i></a>
-                    <form action="" method="POST">
-                        <input class="comment-input" type="text" />
-                        <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                    </form>
-                </div>
-            </div>
+            <% }) %>
         </div>
         <div class="suggetions">
             <div class="suggetion">
@@ -71,8 +60,8 @@
         <div>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/">Contact Us</a></li>
-                <li><a href="/activity">Activity</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Activity</a></li>
             </ul>
         </div>
         <div>
