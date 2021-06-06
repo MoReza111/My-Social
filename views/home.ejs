@@ -94,12 +94,12 @@
             <button id="close" class="close">X</button>
         </div>
         <div class="modal-content">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="/posts" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
-                    <textarea class="inputs"></textarea>
+                    <textarea class="inputs" name="content"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="file" name="file" id="file" class="inputfile" />
+                    <input type="file" name="image" id="file" class="inputfile" />
                     <label for="file"><i class="fas fa-upload"></i> Choose a file</label>
                 </div>    
                 <input type="submit" value="submit" class="btn btn-secondary">

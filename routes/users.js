@@ -62,6 +62,14 @@ router.post('/register',(req,res,next)=>{
                     if(err) console.error(err)
                     console.log(result)
                 })
+
+                const follow = {follower_id:user.user_id,following_id:user.user_id}
+                sql = 'INSERT INTO followers SET ?'
+                const query3 = db.query(sql,follow,(err,result)=>{
+                    if(err) console.error(err)
+                    console.log(result)
+                })
+
                 req.flash('success_msg','You are now registered and can login')
                 return res.redirect('/users/login')
             }else{

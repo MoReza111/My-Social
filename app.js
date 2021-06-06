@@ -10,6 +10,7 @@ require('dotenv').config()
 const passportConfig = require('./config/passport')
 const homeRouter = require('./routes/index')
 const userRouter = require('./routes/users')
+const postRouter = require('./routes/posts')
 
 const app = express()
 
@@ -17,7 +18,8 @@ const app = express()
 passportConfig(passport)
 
 // Bopdyparser
-app.use(boddyParser.urlencoded({extended:false}))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 // Express Session
 app.set('trust proxy', 1) // trust first proxy
@@ -52,6 +54,7 @@ app.set('view engine','ejs')
 // Routes
 app.use('/',homeRouter)
 app.use('/users',userRouter)
+app.use('/posts',postRouter)
 
 const PORT = process.env.PORT || 5000
 
