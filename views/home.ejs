@@ -19,6 +19,7 @@
 </div>
 <div class="container">
     <div class="main">
+        <% if(posts){ %>
         <div class="posts">
             <% posts.forEach(post=>{  %>
             <div class="post">
@@ -27,10 +28,15 @@
                     <a href="#"><%= post.user_name %></a>
                 </div>
                 <div class="post-content">
+                    <br>
                     <% if(post.media_name){ %>
                         <img class="post-img" src="/images/posts/<%= post.media_name %>" >
                     <% } %>    
                     <p><%= post.content %></p>
+                    <br>
+                    <br>
+                    <p>posted <%= getTime(post.created_at) %> ago</p>
+                    <br>
                 </div>
                 <div class="post-footer">
                     <a href="#"><i class="far fa-heart"></i></a>
@@ -42,6 +48,9 @@
             </div>
             <% }) %>
         </div>
+        <% }else{ %>
+            <div style="color:#fff;"><p>NO FOLLOWING</p></div>
+        <% } %>    
         <div class="suggetions">
             <div class="suggetion">
                 <ul>

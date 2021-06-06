@@ -2,6 +2,7 @@ const express = require('express')
 
 const {ensureAuthenticated,forwardAuthenticated } = require('./../config/auth')
 const db = require('./../db')
+const timeSince = require('../utils/timeSince')
 
 const router = express.Router()
 
@@ -17,11 +18,12 @@ router.get('/home',ensureAuthenticated,(req,res,next)=>{
         LEFT JOIN media m USING(media_id)
         JOIN followers f  ON f.following_id = u.user_id
         WHERE f.follower_id = '${req.user.user_id}'
+        ORDER BY p.created_at DESC
     `
     const query = db.query(sql,(err,result)=>{
         if(err) throw err
         console.log(req.user)
-        return res.render('home', {posts : result , user:req.user})
+        return res.render('home', {posts : result , user:req.user , getTime:timeSince})
     })
     
 })
