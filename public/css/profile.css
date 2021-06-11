@@ -1,0 +1,55 @@
+.profile-header{
+    background-color:#fff;
+    position: relative;
+    height:250px;
+}
+
+.follow_btn,
+.profile_image{
+    position: absolute;
+}
+
+.profile_image{
+    top:65%;
+    left: 20px;
+    width: 250px;
+    height:250px;
+}
+
+.follow_btn{
+    top:110%;
+    right:20px;
+}
+
+.file-input{
+    display:none;
+}
+
+.profile_image label{
+    width:100%;
+}
+
+.profile_image img{
+    cursor: pointer;
+    width:100%;
+    border-radius: 50%;
+}
+
+.profile-content{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 150px 0 0 15px;
+    font-size: 1.2rem;
+}
+
+.btn-profile{
+    color: #fff;
+    background-color: transparent;
+    border:2px aqua solid;
+}
+
+.btn-small{
+    width:25px;
+    border-radius: 50%;
+}

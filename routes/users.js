@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs')
 const { v4: uuidv4 } = require('uuid')
 const passport = require('passport')
 
+const timeSince = require('../utils/timeSince')
+
 const router = express.Router()
 
 // Login Page
@@ -87,15 +89,50 @@ router.post('/register',(req,res,next)=>{
     }
 })
 
-// Profile Page
-router.get('/profile',(req,res,next)=>{
-    res.send("HI there")
-})
+// Profile Page OR Other User Profiles Page
+router.get('/profile/:username?',(req,res,next)=>{
+    let sql
+    let person
+    if(req.params.username){
+        sql = `
+            SELECT u.user_name, u.profile_image , u.user_id, p.post_id,p.content,p.created_at ,m.media_name  FROM users u
+            JOIN posts p USING (user_id)
+            LEFT JOIN posts_media pm USING (post_id)
+            LEFT JOIN media m USING(media_id)
+            WHERE  u.user_name = '${req.params.username}'
+            ORDER BY p.created_at DESC
+        `
 
-// Other User Profiles Page
-router.get('/profile/:userID',(req,res,next)=>{
-    res.send("HI there")
-})
+        const findUserSQL = `
+            SELECT user_name, profile_image , user_id , name  FROM users
+            WHERE user_name = '${req.params.username}'
+        `
+        const queryFindUserSQL = db.query(findUserSQL,(err,result)=>{
+            if(err) throw err
+            person = result[0]
+        })
 
+    }else if(req.user){
+        sql = `
+            SELECT u.user_name, u.profile_image , u.user_id, p.post_id,p.content,p.created_at ,m.media_name  FROM users u
+            JOIN posts p USING (user_id)
+            LEFT JOIN posts_media pm USING (post_id)
+            LEFT JOIN media m USING(media_id)
+            WHERE  u.user_name = '${req.user.user_name}'
+            ORDER BY p.created_at DESC
+        `
+
+        person = req.user
+    }else{
+        req.flash('error_msg', 'Please log in to view that resource')
+        return res.redirect('/users/login')
+    }
+
+    const query = db.query(sql,(err,result)=>{
+        if(err) throw err
+        console.log(result)
+        return res.render('profile', {posts : result , user:req.user ? req.user : null , getTime:timeSince , person})
+    })
+})
 
 module.exports = router

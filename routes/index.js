@@ -22,7 +22,6 @@ router.get('/home',ensureAuthenticated,(req,res,next)=>{
     `
     const query = db.query(sql,(err,result)=>{
         if(err) throw err
-        console.log(req.user)
         return res.render('home', {posts : result , user:req.user , getTime:timeSince})
     })
     

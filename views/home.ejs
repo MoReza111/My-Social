@@ -1,22 +1,7 @@
 <head>
     <link rel="stylesheet" href="/css/home.css" />
 </head>
-<div class="header">
-    <div class="header-logo">
-        <a href="/">My-Social</a>
-    </div>
-    <form action="" method="post">
-        <input class="search-input" type="text" placeholder="Search" />
-        <button type="submit"><i class="fas fa-search"></i></button>
-    </form>
-    <nav>
-        <ul>
-            <li><a href="/"><i class="fas fa-home"></i></a></li>
-            <li><a href="#"><i class="far fa-heart"></i></a></li>
-            <li><a href="/users/profile"><img src="/images/<%= user.profile_image %>" alt="profile-pic" class="nav-img" /></a></li>
-        </ul>
-    </nav>
-</div>
+    <%- include('./partials/header' , {user}) %>
 <div class="container">
     <div class="main">
         <% if(posts){ %>
@@ -64,26 +49,7 @@
         </div>
     </div>
 </div>
-<div class="footer">
-    <div class="footer-link">
-        <div>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Activity</a></li>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li><a href="/">Api</a></li>
-                <li><a href="/">Github</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-text">
-        <p>All rights reserved by <a href="">@MoReza111</a></p>
-    </div>
-</div>
+    <%- include('./partials/footer') %>
 <button id="open" class="open-modal">
     <i class="fas fa-plus"></i>
 </button>
