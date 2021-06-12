@@ -91,9 +91,19 @@ router.post('/register',(req,res,next)=>{
 
 // Profile Page OR Other User Profiles Page
 router.get('/profile/:username?',(req,res,next)=>{
-    let sql
-    let person
+    let sql,query
+    let person,following
     if(req.params.username){
+        sql = `
+            SELECT * FROM followers
+            WHERE follower_id = '${req.user.user_id}'
+        `
+
+        query = db.query(sql,(err,result)=>{
+            if(err) throw err
+            following = result
+        })
+
         sql = `
             SELECT u.user_name, u.profile_image , u.user_id, p.post_id,p.content,p.created_at ,m.media_name  FROM users u
             JOIN posts p USING (user_id)
@@ -128,10 +138,10 @@ router.get('/profile/:username?',(req,res,next)=>{
         return res.redirect('/users/login')
     }
 
-    const query = db.query(sql,(err,result)=>{
+    query = db.query(sql,(err,result)=>{
         if(err) throw err
         console.log(result)
-        return res.render('profile', {posts : result , user:req.user ? req.user : null , getTime:timeSince , person})
+        return res.render('profile', {posts : result , user:req.user ? req.user : null , getTime:timeSince , person, following})
     })
 })
 

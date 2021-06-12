@@ -12,7 +12,15 @@
     </div>
     <div class="follow_btn">
         <button class="btn btn-profile btn-small"><i class="fa fa-ellipsis-h"></i></button>
-        <button class="btn btn-profile">Follow</button>
+        <button id="username_to_follow"  class="btn btn-profile" value="<%= person.user_id %> <%= user.user_id %>">
+            <% let flag = false %>
+            <% following.forEach(f=> { %>  
+                <% if(person.user_id == f.following_id){ %>
+                    <% flag = true %>
+                <% } %>    
+            <% }) %>
+            <%= flag ? "Unfollow" : "Follow" %>
+        </button>
     </div>
 </div>
 <div class="profile-content">
@@ -56,3 +64,4 @@
     <%- include('./partials/footer') %>
 
 <script src="/js/index.js"></script>
+<script src="/js/follow.js"></script>

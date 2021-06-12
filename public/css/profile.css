@@ -1,3 +1,8 @@
+body{
+    min-height:860px;
+    height:100vh;
+}
+
 .profile-header{
     background-color:#fff;
     position: relative;

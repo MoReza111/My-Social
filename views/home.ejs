@@ -45,14 +45,25 @@
         <% }else{ %>
             <div style="color:#fff;"><p>NO FOLLOWING</p></div>
         <% } %>    
-        <div class="suggetions">
-            <div class="suggetion">
+        <div class="suggestions">
+            <div class="suggestion">
                 <ul>
-                    <li>
-                        <form action="" method="post">
-                            <a href="#">username</a><input type="submit" class="btn btn-primary" value="Follow"></input>
-                        </form>
-                    </li>
+                    <% suggested.forEach(sug=>{ %>
+                        <% if(sug.user_id != user.user_id){ %>
+                            <li>
+                                <a href="/users/profile/<%= sug.user_name %>"><%= sug.user_name %></a>
+                                <button id="username_to_follow"  class="btn btn-primary" value="<%= sug.user_id %> <%= user.user_id %>">
+                                    <% let flag = false %>
+                                    <% following.forEach(f=> { %>  
+                                        <% if(sug.user_id == f.following_id){ %>
+                                            <% flag = true %>
+                                        <% } %>    
+                                    <% }) %>
+                                    <%= flag ? "Unfollow" : "Follow" %>
+                                </button>
+                            </li>
+                        <% } %>
+                    <% }) %>    
                 </ul>
             </div>
         </div>
@@ -87,3 +98,4 @@
 </div>
 
 <script src="/js/index.js"></script>
+<script src="/js/follow.js"></script>
