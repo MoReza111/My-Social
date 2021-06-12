@@ -12,15 +12,18 @@ router.post('/',imageUploading('posts','post'),ensureAuthenticated,(req,res,next
 
     const post = {post_id:uuidv4(),content,user_id:req.user.user_id}
     
+    let media,pm
+
     if(req.file){
-        const media = {media_id: uuidv4(),media_name:req.file.filename}
-        const pm = {post_id:post.post_id,media_id:media.media_id}
+        media = {media_id: uuidv4(),media_name:req.file.filename}
+        pm = {post_id:post.post_id,media_id:media.media_id}
     }
 
     const sql1 = 'INSERT INTO posts SET ?'
+    let sql2,sql3
     if(req.file){
-        const sql2 = 'INSERT INTO media SET ?'
-        const sql3 = 'INSERT INTO posts_media SET ?'
+        sql2 = 'INSERT INTO media SET ?'
+        sql3 = 'INSERT INTO posts_media SET ?'
     }
 
     const query1 = db.query(sql1,post,(err,result)=>{
@@ -41,6 +44,52 @@ router.post('/',imageUploading('posts','post'),ensureAuthenticated,(req,res,next
     }
     
     res.redirect('home')
+})
+
+router.post('/delete/:id',(req,res,next)=>{
+    console.log(req.params)
+    const {id}= req.params
+
+    let sql = `
+        SELECT * FROM posts_media
+        WHERE post_id = '${id}'
+    `
+    let query = db.query(sql,(err,result)=>{
+        if(err) throw err
+        console.log(result)
+        if(result.length !== 0){
+            sql = `
+                DELETE FROM media
+                WHERE media_id = '${result[0].media_id}'
+            `
+
+            query = db.query(sql,(err)=>{
+                if(err) throw err
+                })
+        }
+    })
+
+    sql = `
+        DELETE FROM posts_media
+        WHERE post_id = '${id}'
+    `
+
+    query = db.query(sql,(err)=>{
+        if(err) throw err
+    })
+
+
+    sql = `
+        DELETE FROM posts
+        WHERE post_id = '${id}'
+    `
+
+    query = db.query(sql,(err)=>{
+        if(err) throw err
+    })
+
+    
+    res.redirect('/home')
 })
 
 module.exports = router

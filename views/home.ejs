@@ -9,8 +9,17 @@
             <% posts.forEach(post=>{  %>
             <div class="post">
                 <div class="post-header">
-                    <img src="/images/<%= post.profile_image %>" alt="user-profile" />
-                    <a href="#"><%= post.user_name %></a>
+                    <div class="user-info">
+                        <img src="/images/<%= post.profile_image %>" alt="user-profile" />
+                        <a href="#"><%= post.user_name %></a>
+                    </div>
+                    <% if(user.user_id == post.user_id){ %>
+                        <div class="options">
+                            <form action="/posts/delete/<%= post.post_id %>" method="POST">
+                                <button type="submit"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </div>
+                    <% } %>
                 </div>
                 <div class="post-content">
                     <br>
