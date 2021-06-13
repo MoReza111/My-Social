@@ -12,15 +12,17 @@
     </div>
     <div class="follow_btn">
         <button class="btn btn-profile btn-small"><i class="fa fa-ellipsis-h"></i></button>
-        <button id="username_to_follow"  class="btn btn-profile" value="<%= person.user_id %> <%= user.user_id %>">
-            <% let flag = false %>
-            <% following.forEach(f=> { %>  
-                <% if(person.user_id == f.following_id){ %>
-                    <% flag = true %>
-                <% } %>    
-            <% }) %>
-            <%= flag ? "Unfollow" : "Follow" %>
-        </button>
+        <% if(following){ %>
+            <button id="username_to_follow"  class="btn btn-profile" value="<%= person.user_id %> <%= user.user_id %>">
+                <% let flag = false %>
+                <% following.forEach(f=> { %>  
+                    <% if(person.user_id == f.following_id){ %>
+                        <% flag = true %>
+                    <% } %>    
+                <% }) %>
+                <%= flag ? "Unfollow" : "Follow" %>
+            </button>
+        <% } %>    
     </div>
 </div>
 <div class="profile-content">
@@ -35,8 +37,17 @@
             <% posts.forEach(post=>{  %>
             <div class="post">
                 <div class="post-header">
-                    <img src="/images/<%= post.profile_image %>" alt="user-profile" />
-                    <a href="#"><%= post.user_name %></a>
+                    <div class="user-info">
+                        <img src="/images/<%= post.profile_image %>" alt="user-profile" />
+                        <a href="/users/profile/<%= post.user_name %>"><%= post.user_name %></a>
+                    </div>
+                    <% if(user.user_id == post.user_id){ %>
+                        <div class="options">
+                            <form action="/posts/delete/<%= post.post_id %>" method="POST">
+                                <button type="submit"><i class="fa fa-trash"></i></button>
+                            </form>
+                        </div>
+                    <% } %>
                 </div>
                 <div class="post-content">
                     <br>

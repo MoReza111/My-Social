@@ -11,7 +11,7 @@
                 <div class="post-header">
                     <div class="user-info">
                         <img src="/images/<%= post.profile_image %>" alt="user-profile" />
-                        <a href="#"><%= post.user_name %></a>
+                        <a href="/users/profile/<%= post.user_name %>"><%= post.user_name %></a>
                     </div>
                     <% if(user.user_id == post.user_id){ %>
                         <div class="options">
